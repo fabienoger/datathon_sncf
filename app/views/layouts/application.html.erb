@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DatathonSncf</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header>
+    <ul>
+      <% if user_signed_in? %>
+        <li><a href="/">Home</a></li>
+        <li><a href="/request">Request</a></li>
+        <li><%= link_to current_user.id, edit_user_registration_path %></li>
+        <li><a rel="nofollow" data-method="delete" href="/users/sign_out">Log out</a></li>
+      <% else %>
+        <li><a href="/users/sign_up">Sign up</a></li>
+        <li><a href="/users/sign_in">Login</a></li>
+      <% end %>
+      <li><a href="/auth/netatmo">Auth</a></li>
+    </ul>
+  </header>
+  <main>
+    <%= yield %>
+  </main>
+</body>
+</html>
